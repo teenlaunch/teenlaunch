@@ -7,22 +7,38 @@
 <title>TeenLaunch AI</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <nav>
-<h2>TeenLaunch AI</h2>
-<div>
-<a href="#features">Features</a>
-<a href="#pricing">Pricing</a>
-</div>
+  <h2>TeenLaunch AI</h2>
+  <div>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+  </div>
 </nav>
 
+<!-- HERO -->
 <header class="hero">
-<h1>Start Your First Business Before Graduation</h1>
-<p>AI tools built specifically for teens.</p>
-<button onclick="goToQuiz()">Start Business Quiz</button>
+  <h1>Start Your First Business Before Graduation</h1>
+  <p>AI tools built specifically for teens.</p>
+
+  <button onclick="goToQuiz()">Find Your Best Business</button>
 </header>
 
+<!-- FEATURES -->
 <section id="features">
+  <h2>Features</h2>
+
+  <div class="grid">
+    <div class="card"><h3>AI Business Ideas</h3><p>Personalized startup ideas.</p></div>
+    <div class="card"><h3>Flyer Generator</h3><p>Create babysitting and service flyers.</p></div>
+    <div class="card"><h3>Earnings Tracker</h3><p>Track your income goals.</p></div>
+    <div class="card"><h3>Business Cards</h3><p>Create printable cards instantly.</p></div>
+  </div>
+</section>
+
+<!-- QUIZ SECTION -->
 <section id="quizSection" style="display:none;">
   <h2>Business Quiz</h2>
 
@@ -30,7 +46,8 @@
 
   <button onclick="nextQuestion()">Next</button>
 </section>
-  
+
+<!-- RESULTS -->
 <section id="resultsSection" style="display:none;">
   <h2>Your Business Results</h2>
 
@@ -43,52 +60,27 @@
   <h3>What to do next</h3>
   <p id="nextSteps"></p>
 </section>
-  
-<h2>Features</h2>
-<div class="grid">
-<div class="card"><h3>AI Business Ideas</h3><p>Personalized startup ideas.</p></div>
-<div class="card"><h3>Flyer Generator</h3><p>Create babysitting and service flyers.</p></div>
-<div class="card"><h3>Earnings Tracker</h3><p>Track your income goals.</p></div>
-<div class="card"><h3>Business Cards</h3><p>Create printable cards instantly.</p></div>
-</div>
-</section>
-  
-<section id="quizSection" style="display:none;">
-  <h2>Business Quiz</h2>
 
-  <div id="questionBox"></div>
-
-  <button onclick="nextQuestion()">Next</button>
-</section>
-  
-  <section id="resultsSection" style="display:none;">
-  <h2>Your Business Results</h2>
-
-  <div id="resultsBox"></div>
-
-  <h3>Get your results sent to you</h3>
-  <input type="email" id="emailInput" placeholder="Enter your email">
-  <button onclick="sendEmail()">Send Results</button>
-
-  <p id="nextSteps"></p>
-</section>
-  
+<!-- PRICING -->
 <section id="pricing">
-<h2>Pricing</h2>
-<div class="card">
-<h3>Free</h3>
-<p>$0/month</p>
-</div>
-<div class="card premium">
-<h3>Pro</h3>
-<p>$5/month</p>
-</div>
+  <h2>Pricing</h2>
+
+  <div class="card">
+    <h3>Free</h3>
+    <p>$0/month</p>
+  </div>
+
+  <div class="card premium">
+    <h3>Pro</h3>
+    <p>$5/month</p>
+  </div>
 </section>
 
 <footer>
-<p>TeenLaunch AI MVP</p>
+  <p>TeenLaunch AI MVP</p>
 </footer>
 
 <script src="app.js"></script>
+
 </body>
 </html>
