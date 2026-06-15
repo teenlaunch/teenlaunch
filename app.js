@@ -1,5 +1,5 @@
-
 let currentQuestion = 0;
+let answers = [];
 
 const questions = [
   {
@@ -24,36 +24,36 @@ const questions = [
     q: "What sounds most fun?",
     options: [
       { text: "Selling products", value: "sell" },
-      { text: "Helping people", value: "service" },
+      { text: "Helping people", value: "help" },
       { text: "Making content", value: "content" },
       { text: "Building things", value: "build" }
     ]
   },
   {
-    q: "Your strongest skill?",
+    q: "What best describes you?",
     options: [
-      { text: "Creativity", value: "creative" },
-      { text: "Communication", value: "social" },
-      { text: "Tech/social media", value: "digital" },
-      { text: "Hands-on skills", value: "hands" }
+      { text: "Creative", value: "creative" },
+      { text: "Outgoing", value: "social" },
+      { text: "Tech-savvy", value: "digital" },
+      { text: "Hands-on", value: "hands" }
     ]
   },
   {
-    q: "Ideal income style?",
+    q: "What income style do you want?",
     options: [
-      { text: "Quick money", value: "fast" },
-      { text: "Steady growth", value: "steady" },
+      { text: "Fast cash", value: "fast" },
+      { text: "Steady income", value: "steady" },
       { text: "Big scalable income", value: "scalable" },
       { text: "Passive income", value: "passive" }
     ]
   },
   {
-    q: "Best platform?",
+    q: "Where do you prefer working?",
     options: [
-      { text: "TikTok/Instagram", value: "digital" },
-      { text: "Website", value: "online" },
-      { text: "Local community", value: "local" },
-      { text: "Etsy/shop", value: "sell" }
+      { text: "At home", value: "online" },
+      { text: "In my neighborhood", value: "local" },
+      { text: "On social media", value: "digital" },
+      { text: "Hands-on environments", value: "hands" }
     ]
   },
   {
@@ -61,38 +61,36 @@ const questions = [
     options: [
       { text: "Money", value: "money" },
       { text: "Freedom", value: "freedom" },
-      { text: "Creativity", value: "creativity" },
-      { text: "Helping others", value: "help" }
+      { text: "Creativity", value: "creative" },
+      { text: "Helping people", value: "help" }
     ]
   },
   {
-    q: "Patience level?",
+    q: "How fast do you want results?",
     options: [
-      { text: "Fast results", value: "fast" },
-      { text: "Medium", value: "medium" },
-      { text: "Long-term build", value: "long" }
+      { text: "Very fast", value: "fast" },
+      { text: "Medium speed", value: "medium" },
+      { text: "Long-term growth", value: "long" }
     ]
   },
   {
     q: "Best environment?",
     options: [
       { text: "At home", value: "online" },
-      { text: "Out locally", value: "local" },
-      { text: "Creative space", value: "studio" }
+      { text: "Out in my area", value: "local" },
+      { text: "Creative space", value: "creative" }
     ]
   },
   {
-    q: "Most exciting business?",
+    q: "What sounds most exciting?",
     options: [
-      { text: "Running a shop", value: "sell" },
-      { text: "Going viral", value: "content" },
-      { text: "Helping clients", value: "service" },
+      { text: "Running a business", value: "sell" },
+      { text: "Going viral online", value: "content" },
+      { text: "Helping clients", value: "help" },
       { text: "Building a brand", value: "build" }
     ]
   }
 ];
-
-let answers = [];
 
 function goToQuiz() {
   document.getElementById("quizSection").style.display = "block";
@@ -121,7 +119,7 @@ function nextQuestion() {
   let selected = document.querySelector('input[name="q"]:checked');
 
   if (!selected) {
-    alert("Pick an answer first!");
+    alert("Please select an answer.");
     return;
   }
 
@@ -131,13 +129,14 @@ function nextQuestion() {
   if (currentQuestion < questions.length) {
     showQuestion();
   } else {
-  function showResults() {
+    showResults();
+  }
+}
+
+function showResults() {
   document.getElementById("quizSection").style.display = "none";
   document.getElementById("resultsSection").style.display = "block";
 
-  let scoreMap = {};
-
-  // HUGE expanded business database (this is what makes it "generate more jobs")
   const businesses = [
     {
       name: "Babysitting Business",
@@ -145,8 +144,8 @@ function nextQuestion() {
       difficulty: "Easy",
       cost: "$0",
       earnings: "$15–25/hour",
-      why: "You selected childcare, people skills, or local work.",
-      step: "Create a flyer and ask 3 neighbors if they need help."
+      why: "You enjoy helping people and local work.",
+      step: "Make a simple flyer and ask 3 neighbors."
     },
     {
       name: "Press-On Nail Business",
@@ -154,8 +153,8 @@ function nextQuestion() {
       difficulty: "Medium",
       cost: "$20–$100",
       earnings: "$200–$2,000/month",
-      why: "You like creativity and selling products online.",
-      step: "Design 3 nail sets and post them on TikTok or Etsy."
+      why: "You like creativity and selling products.",
+      step: "Design 3 nail sets and post them online."
     },
     {
       name: "TikTok Content Creator",
@@ -163,26 +162,26 @@ function nextQuestion() {
       difficulty: "Medium",
       cost: "$0",
       earnings: "$0–$10,000+/month",
-      why: "You chose content creation or social media.",
-      step: "Post 1 video daily for 7 days and track views."
+      why: "You like social media and content creation.",
+      step: "Post 1 video daily for 7 days."
     },
     {
-      name: "Dog Walking / Pet Sitting",
+      name: "Dog Walking Business",
       tags: ["local", "help", "social"],
       difficulty: "Easy",
       cost: "$0",
       earnings: "$10–$30/hour",
-      why: "You prefer local, flexible, people-facing work.",
-      step: "Ask neighbors or post on a community board."
+      why: "You like flexible local work.",
+      step: "Ask neighbors if they need dog walking help."
     },
     {
-      name: "Digital Product Shop (Etsy)",
+      name: "Digital Etsy Shop",
       tags: ["online", "build", "creative"],
       difficulty: "Medium",
       cost: "$0–$30",
       earnings: "$100–$5,000/month",
-      why: "You like online work and building systems.",
-      step: "Create 1 digital planner or template and upload it."
+      why: "You like online creative work.",
+      step: "Create and upload your first digital product."
     },
     {
       name: "Tutoring Business",
@@ -191,100 +190,58 @@ function nextQuestion() {
       cost: "$0",
       earnings: "$20–$40/hour",
       why: "You enjoy helping others learn.",
-      step: "Offer help in a subject you’re strong in at school."
+      step: "Offer tutoring at school or online."
     },
     {
-      name: "Car Wash / Cleaning Service",
-      tags: ["local", "hands", "fast"],
+      name: "Car Wash Service",
+      tags: ["hands", "local", "fast"],
       difficulty: "Easy",
       cost: "$0–$10",
       earnings: "$15–$50/hour",
-      why: "You prefer hands-on, local work.",
-      step: "Offer services to neighbors or family friends."
+      why: "You prefer hands-on local work.",
+      step: "Offer car washes to family or neighbors."
     },
     {
-      name: "Social Media Manager (Starter)",
+      name: "Social Media Manager",
       tags: ["digital", "content", "online"],
       difficulty: "Hard",
       cost: "$0",
       earnings: "$200–$3,000/month",
-      why: "You like social media and digital work.",
-      step: "Help a small business post 3 times a week."
+      why: "You understand social media.",
+      step: "Help a small business post content weekly."
     }
   ];
 
-  // scoring system
-  answers.forEach(ans => {
+  let scores = {};
+
+  answers.forEach(a => {
     businesses.forEach(b => {
-      if (b.tags.includes(ans)) {
-        scoreMap[b.name] = (scoreMap[b.name] || 0) + 1;
+      if (b.tags.includes(a)) {
+        scores[b.name] = (scores[b.name] || 0) + 1;
       }
     });
   });
 
-  // rank results
   let ranked = businesses
     .map(b => ({
       ...b,
-      score: scoreMap[b.name] || 0
+      score: scores[b.name] || 0
     }))
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3);
 
-  let top3 = ranked.slice(0, 3);
-
-  // render results in your requested format
-  document.getElementById("resultsBox").innerHTML =
-    top3.map(b => `
-      <div class="card">
-        <h3>${b.name}</h3>
-        <p><b>Difficulty:</b> ${b.difficulty}</p>
-        <p><b>Startup Cost:</b> ${b.cost}</p>
-        <p><b>Potential Earnings:</b> ${b.earnings}</p>
-        <p><b>Why It's a Match:</b> ${b.why}</p>
-        <p><b>First Step:</b> ${b.step}</p>
-      </div>
-    `).join("");
+  document.getElementById("resultsBox").innerHTML = ranked.map(b => `
+    <div class="card">
+      <h3>${b.name}</h3>
+      <p><b>Difficulty:</b> ${b.difficulty}</p>
+      <p><b>Startup Cost:</b> ${b.cost}</p>
+      <p><b>Potential Earnings:</b> ${b.earnings}</p>
+      <p><b>Why It's a Match:</b> ${b.why}</p>
+      <p><b>First Step:</b> ${b.step}</p>
+    </div>
+  `).join("");
 
   document.getElementById("nextSteps").innerText =
-    "Pick ONE idea and start within 24 hours. Speed beats perfection when building your first business.";
+    "Pick ONE idea and start within 24 hours. Action beats planning.";
+
 }
-
-function showResults() {
-  document.getElementById("quizSection").style.display = "none";
-  document.getElementById("resultsSection").style.display = "block";
-
-  let scores = {
-    "Press-On Nail Business": 0,
-    "Content Creator": 0,
-    "Local Service Business": 0,
-    "Digital/Etsy Business": 0
-  };
-
-  answers.forEach(v => {
-    if (v === "creative" || v === "sell") scores["Press-On Nail Business"]++;
-    if (v === "content" || v === "digital") scores["Content Creator"]++;
-    if (v === "social" || v === "help" || v === "local") scores["Local Service Business"]++;
-    if (v === "online" || v === "build" || v === "passive") scores["Digital/Etsy Business"]++;
-  });
-
-  let sorted = Object.entries(scores).sort((a,b) => b[1]-a[1]);
-  let top3 = sorted.slice(0,3);
-
-  document.getElementById("resultsBox").innerHTML =
-    top3.map(b => `<p><b>${b[0]}</b></p>`).join("");
-
-  document.getElementById("nextSteps").innerText =
-    "Start small, test your idea, and post your progress online daily to grow faster.";
-}
-
-function sendEmail() {
-  let email = document.getElementById("emailInput").value;
-
-  if (!email.includes("@")) {
-    alert("Enter a valid email");
-    return;
-  }
-
-  alert("Results sent to " + email + " (demo version — connect backend later)");
-}
-<script src="app.js"></script>
