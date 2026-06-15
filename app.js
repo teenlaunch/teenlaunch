@@ -287,3 +287,4 @@ function sendEmail() {
 
   alert("Results sent to " + email + " (demo version — connect backend later)");
 }
+<script src="app.js"></script>
