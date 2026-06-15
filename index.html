@@ -52,7 +52,27 @@
 <div class="card"><h3>Business Cards</h3><p>Create printable cards instantly.</p></div>
 </div>
 </section>
+  
+<section id="quizSection" style="display:none;">
+  <h2>Business Quiz</h2>
 
+  <div id="questionBox"></div>
+
+  <button onclick="nextQuestion()">Next</button>
+</section>
+  
+  <section id="resultsSection" style="display:none;">
+  <h2>Your Business Results</h2>
+
+  <div id="resultsBox"></div>
+
+  <h3>Get your results sent to you</h3>
+  <input type="email" id="emailInput" placeholder="Enter your email">
+  <button onclick="sendEmail()">Send Results</button>
+
+  <p id="nextSteps"></p>
+</section>
+  
 <section id="pricing">
 <h2>Pricing</h2>
 <div class="card">
