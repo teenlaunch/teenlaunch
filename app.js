@@ -131,7 +131,123 @@ function nextQuestion() {
   if (currentQuestion < questions.length) {
     showQuestion();
   } else {
-    showResults();
+  function showResults() {
+  document.getElementById("quizSection").style.display = "none";
+  document.getElementById("resultsSection").style.display = "block";
+
+  let scoreMap = {};
+
+  // HUGE expanded business database (this is what makes it "generate more jobs")
+  const businesses = [
+    {
+      name: "Babysitting Business",
+      tags: ["social", "help", "local"],
+      difficulty: "Easy",
+      cost: "$0",
+      earnings: "$15–25/hour",
+      why: "You selected childcare, people skills, or local work.",
+      step: "Create a flyer and ask 3 neighbors if they need help."
+    },
+    {
+      name: "Press-On Nail Business",
+      tags: ["creative", "sell", "build"],
+      difficulty: "Medium",
+      cost: "$20–$100",
+      earnings: "$200–$2,000/month",
+      why: "You like creativity and selling products online.",
+      step: "Design 3 nail sets and post them on TikTok or Etsy."
+    },
+    {
+      name: "TikTok Content Creator",
+      tags: ["content", "digital", "build"],
+      difficulty: "Medium",
+      cost: "$0",
+      earnings: "$0–$10,000+/month",
+      why: "You chose content creation or social media.",
+      step: "Post 1 video daily for 7 days and track views."
+    },
+    {
+      name: "Dog Walking / Pet Sitting",
+      tags: ["local", "help", "social"],
+      difficulty: "Easy",
+      cost: "$0",
+      earnings: "$10–$30/hour",
+      why: "You prefer local, flexible, people-facing work.",
+      step: "Ask neighbors or post on a community board."
+    },
+    {
+      name: "Digital Product Shop (Etsy)",
+      tags: ["online", "build", "creative"],
+      difficulty: "Medium",
+      cost: "$0–$30",
+      earnings: "$100–$5,000/month",
+      why: "You like online work and building systems.",
+      step: "Create 1 digital planner or template and upload it."
+    },
+    {
+      name: "Tutoring Business",
+      tags: ["help", "social", "steady"],
+      difficulty: "Medium",
+      cost: "$0",
+      earnings: "$20–$40/hour",
+      why: "You enjoy helping others learn.",
+      step: "Offer help in a subject you’re strong in at school."
+    },
+    {
+      name: "Car Wash / Cleaning Service",
+      tags: ["local", "hands", "fast"],
+      difficulty: "Easy",
+      cost: "$0–$10",
+      earnings: "$15–$50/hour",
+      why: "You prefer hands-on, local work.",
+      step: "Offer services to neighbors or family friends."
+    },
+    {
+      name: "Social Media Manager (Starter)",
+      tags: ["digital", "content", "online"],
+      difficulty: "Hard",
+      cost: "$0",
+      earnings: "$200–$3,000/month",
+      why: "You like social media and digital work.",
+      step: "Help a small business post 3 times a week."
+    }
+  ];
+
+  // scoring system
+  answers.forEach(ans => {
+    businesses.forEach(b => {
+      if (b.tags.includes(ans)) {
+        scoreMap[b.name] = (scoreMap[b.name] || 0) + 1;
+      }
+    });
+  });
+
+  // rank results
+  let ranked = businesses
+    .map(b => ({
+      ...b,
+      score: scoreMap[b.name] || 0
+    }))
+    .sort((a, b) => b.score - a.score);
+
+  let top3 = ranked.slice(0, 3);
+
+  // render results in your requested format
+  document.getElementById("resultsBox").innerHTML =
+    top3.map(b => `
+      <div class="card">
+        <h3>${b.name}</h3>
+        <p><b>Difficulty:</b> ${b.difficulty}</p>
+        <p><b>Startup Cost:</b> ${b.cost}</p>
+        <p><b>Potential Earnings:</b> ${b.earnings}</p>
+        <p><b>Why It's a Match:</b> ${b.why}</p>
+        <p><b>First Step:</b> ${b.step}</p>
+      </div>
+    `).join("");
+
+  document.getElementById("nextSteps").innerText =
+    "Pick ONE idea and start within 24 hours. Speed beats perfection when building your first business.";
+}
   }
 }
 
