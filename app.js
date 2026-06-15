@@ -248,8 +248,6 @@ function nextQuestion() {
   document.getElementById("nextSteps").innerText =
     "Pick ONE idea and start within 24 hours. Speed beats perfection when building your first business.";
 }
-  }
-}
 
 function showResults() {
   document.getElementById("quizSection").style.display = "none";
